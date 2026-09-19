@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BreakOut interestelar</title>
+  <style>
+    @keyframes colorShift {
+      0% { color: #ffffff; text-shadow: 0 0 10px #ff6b35, 0 0 20px #ff6b35; }
+      50% { color: #ff6b35; text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff; }
+      100% { color: #ffffff; text-shadow: 0 0 10px #ff6b35, 0 0 20px #ff6b35; }
+    }
+    @keyframes colorShiftDim {
+      0% { color: #cccccc; text-shadow: 0 0 8px #ff6b35, 0 0 16px #ff6b35; }
+      50% { color: #ff8c5c; text-shadow: 0 0 8px #cccccc, 0 0 16px #cccccc; }
+      100% { color: #cccccc; text-shadow: 0 0 8px #ff6b35, 0 0 16px #ff6b35; }
+    }
+    .animate-text {
+      animation: colorShift 3s ease-in-out infinite;
+    }
+    .animate-text-dim {
+      animation: colorShiftDim 3s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body style="margin:0; min-height:100vh; position:relative;">
+  <video autoplay muted loop playsinline style="position:fixed; top:0; left:0; width:100vw; height:100vh; object-fit:cover; z-index:-1;">
+    <source src="assets/video/Interstellar Space Live Wallpaper  Black Hole & Planet  4K Ultra HD - WallVerse (720p, h264, youtube).mp4" type="video/mp4">
+  </video>
+
+  <header id="loginBar" style="position:relative; z-index:1;">
+    <form id="loginForm" style="background:rgba(0,0,0,0.7); color:#fff; padding:20px; border-radius:8px; max-width:400px; margin:20px auto; text-align:center;">
+      <label for="username" class="animate-text-dim">Usuário:</label><br>
+      <input type="text" id="username" required style="margin:5px 0 15px; padding:8px; width:80%;"><br>
+      
+      <label for="password" class="animate-text-dim">Senha:</label><br>
+      <input type="password" id="password" required style="margin:5px 0 15px; padding:8px; width:80%;"><br>
+      
+      <button type="submit" style="margin:5px; padding:8px 16px;">Entrar</button>
+      <button type="button" id="fecharLogin" style="margin:5px; padding:8px 16px;">Fechar</button>
+      <button type="button" id="abrirCadastro" style="margin:5px; padding:8px 16px;">Cadastrar</button>
+    </form>
+  </header>
+
+  <main id="gameArea" style="position:relative; z-index:1; text-align:center; padding-top:20px; color:#fff;">
+    <h1 class="animate-text">🎮 BreakOut interestelar</h1>
+    <canvas id="gameCanvas" width="800" height="600" style="background:rgba(0,0,0,0.5); border-radius:8px; display:block; margin:20px auto;"></canvas>
+    <p class="animate-text-dim">Bem-vindo, <span id="playerName" class="animate-text">Visitante</span>!</p>
+  </main>
+
+  <div id="cadastroModal" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); z-index:10; background:rgba(0,0,0,0.9); color:#fff; padding:30px; border-radius:8px; border:2px solid #fff; text-align:center;">
+    <h2 class="animate-text">Criar Conta</h2>
+    <form id="cadastroForm">
+      <label for="newUser" class="animate-text-dim">Usuário:</label><br>
+      <input type="text" id="newUser" required style="margin:5px 0 15px; padding:8px; width:80%;"><br>
+      
+      <label for="newPass" class="animate-text-dim">Senha:</label><br>
+      <input type="password" id="newPass" required style="margin:5px 0 15px; padding:8px; width:80%;"><br>
+      
+      <button type="submit" style="margin:5px; padding:8px 16px;">Cadastrar</button>
+      <button type="button" id="fecharCadastro" style="margin:5px; padding:8px 16px;">Cancelar</button>
+    </form>
+  </div>
+
+  <script>
+    const loginBar = document.getElementById("loginBar");
+    const cadastroModal = document.getElementById("cadastroModal");
+    const fecharLoginBtn = document.getElementById("fecharLogin");
+    const abrirCadastroBtn = document.getElementById("abrirCadastro");
+    const fecharCadastroBtn = document.getElementById("fecharCadastro");
+    const loginForm = document.getElementById("loginForm");
+    const cadastroForm = document.getElementById("cadastroForm");
+    const playerName = document.getElementById("playerName");
+
+    window.onload = function() {
+      loginBar.style.display = "block";
+    }
+
+    fecharLoginBtn.onclick = function() {
+      loginBar.style.display = "none";
+    }
+
+    abrirCadastroBtn.onclick = function() {
+      cadastroModal.style.display = "block";
+    }
+
+    fecharCadastroBtn.onclick = function() {
+      cadastroModal.style.display = "none";
+    }
+
+    loginForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const user = document.getElementById("username").value;
+      playerName.textContent = user;
+      loginBar.style.display = "none";
+      alert("Login realizado com sucesso! Bem-vindo, " + user);
+    });
+
+    cadastroForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const newUser = document.getElementById("newUser").value;
+      alert("Cadastro realizado! Usuário: " + newUser);
+      cadastroModal.style.display = "none";
+    });
+  </script>
+</body>
+</html>

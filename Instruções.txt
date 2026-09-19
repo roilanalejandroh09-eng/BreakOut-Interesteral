@@ -1,0 +1,110 @@
+📌 Visão Geral do Trabalho
+O trabalho será desenvolvido de forma evolutiva ao longo do semestre, onde você construirá a interface de um pequeno sistema web aplicando progressivamente os conhecimentos da disciplina:
+
+HTML
+⟶
+CSS e Responsividade
+⟶
+JavaScript, persist
+e
+ˆ
+ncia e integra
+c
+¸
+a
+˜
+o com API
+🎯 Escopo obrigatório
+O projeto deve obrigatoriamente ser um sistema web que manipula uma coleção de dados.
+
+🚫 O que NÃO atende ao escopo
+Sites institucionais
+
+Landing pages
+
+Portfólios
+
+Blogs
+
+Páginas predominantemente estáticas
+
+📊 Distribuição de Pontos e Etapas
+Atividade	Valor
+Entrega 0 — Definição do Tema e Escopo	0 pts (obrigatória)
+Etapa 1 — HTML e Estrutura da Interface	3 pts
+Etapa 2 — CSS, Layout e Responsividade	5 pts
+Etapa 3 — JavaScript, Dados e Interatividade	7 pts
+Total	15 pts
+
+
+📌 Entidade Principal (Exemplos)
+O sistema deve girar em torno de uma entidade principal que possa ser cadastrada e manipulada. Exemplos sugeridos:
+
+Biblioteca pessoal: Livro
+
+Controle financeiro: Despesa
+
+Gerenciador de tarefas: Tarefa
+
+Agenda: Compromisso
+
+Catálogo de jogos: Jogo
+
+Controle de treinos: Treino
+
+Catálogo de receitas: Receita
+
+Organização de estudos: Atividade
+
+Sistema de chamados: Chamado
+
+Adoção de animais: Animal
+
+Controle de filmes/séries: Filme/Série
+
+Gerenciador de eventos: Evento
+
+⚙️ Requisitos Funcionais do Sistema Final
+Ao final do semestre, a aplicação deverá obrigatoriamente permitir:
+
+Cadastrar um novo item
+
+Visualizar os itens cadastrados
+
+Visualizar os detalhes de um item
+
+Editar um item
+
+Excluir um item
+
+Pesquisar itens
+
+Filtrar itens
+
+Ordenar itens
+
+Armazenar os dados utilizando localStorage
+
+Recuperar os dados armazenados ao recarregar a aplicação
+
+Consumir pelo menos uma API pública
+
+Utilizar os dados da API em alguma funcionalidade coerente com o sistema
+
+📌 O que entregar na "Entrega 0"
+No campo de resposta da tarefa atual, informe os seguintes pontos:
+
+Nome provisório do sistema  
+(Exemplo: Minha Biblioteca)
+
+Tema do sistema  
+(Exemplo: Sistema para organização dos livros que uma pessoa possui ou pretende ler.)
+
+Entidade principal  
+(Exemplo: Livro)
+
+Principais informações da entidade  
+(Exemplo: título, autor, categoria, ano, status de leitura e avaliação)
+
+API pública que poderá ser utilizada  
+(Exemplo: Open Library API para pesquisar informações sobre livros)
