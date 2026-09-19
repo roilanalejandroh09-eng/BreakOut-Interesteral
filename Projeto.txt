@@ -1,0 +1,17 @@
+Proposta de Projeto: Breakout Customizado
+O objetivo deste projeto é desenvolver uma versão moderna e viciante do clássico jogo Breakout 2D, projetada para rodar diretamente no navegador. O foco principal é reter o usuário através de mecânicas de recompensa, progressão e personalização, garantindo entretenimento e alta jogabilidade.
+🎮 Mecânicas Principais do Jogo
+Ciclo Clássico: O jogador controla uma raquete horizontal para rebater uma bola e destruir uma matriz de blocos no topo da tela.
+Sistema de Vidas: O jogador inicia a partida com 3 vidas (oportunidades). Cada vez que a bola passa da raquete e toca o fundo da tela, uma vida é perdida. O jogo termina (Game Over) quando as 3 vidas se esgotam.
+⚡ Sistema de Sorte e Power-ups (Buffs)
+Para quebrar a monotonia e aumentar o engajamento, o jogo contará com um elemento de imprevisibilidade:
+Ao destruir determinados blocos, haverá uma chance aleatória (baseada em sorte) de dropar um poder ou melhoria que cai em direção à raquete.
+Exemplos de Buffs: Aumento do tamanho da raquete, bola de fogo (que atravessa blocos), imã para prender a bola temporariamente ou divisão da bola em três (Multi-ball).
+🪙 Economia do Jogo e Customização (Loja)
+Moeda Virtual: Destruir blocos e vencer partidas rende dinheiro ao jogador.
+Loja In-game: Um menu onde o usuário pode gastar suas moedas para comprar itens cosméticos, como novas cores e skins para a raquete, efeitos visuais para a bola e temas de fundo.
+💾 Infraestrutura e Persistência de Dados (Backend)
+Para garantir a segurança dos dados e o sentimento de progressão, o jogo será integrado a um sistema robusto de nuvem:
+Autenticação de Usuários: Sistema de cadastro e login para que os jogadores criem contas individuais.
+Banco de Dados e API: Toda a pontuação (High Score) e o saldo de moedas do jogador serão salvos de forma segura através de uma API. Isso elimina o risco de perda de progresso caso o usuário feche o navegador ou limpe o cache
+image.png
