@@ -1,107 +1,218 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BreakOut interestelar</title>
-  <style>
-    @keyframes colorShift {
-      0% { color: #ffffff; text-shadow: 0 0 10px #ff6b35, 0 0 20px #ff6b35; }
-      50% { color: #ff6b35; text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff; }
-      100% { color: #ffffff; text-shadow: 0 0 10px #ff6b35, 0 0 20px #ff6b35; }
-    }
-    @keyframes colorShiftDim {
-      0% { color: #cccccc; text-shadow: 0 0 8px #ff6b35, 0 0 16px #ff6b35; }
-      50% { color: #ff8c5c; text-shadow: 0 0 8px #cccccc, 0 0 16px #cccccc; }
-      100% { color: #cccccc; text-shadow: 0 0 8px #ff6b35, 0 0 16px #ff6b35; }
-    }
-    .animate-text {
-      animation: colorShift 3s ease-in-out infinite;
-    }
-    .animate-text-dim {
-      animation: colorShiftDim 3s ease-in-out infinite;
-    }
-  </style>
-</head>
-<body style="margin:0; min-height:100vh; position:relative;">
-  <video autoplay muted loop playsinline style="position:fixed; top:0; left:0; width:100vw; height:100vh; object-fit:cover; z-index:-1;">
-    <source src="assets/video/background.mp4" type="video/mp4">
-  </video>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="BreakOut Interestelar: jogue, acompanhe suas partidas e consulte o ranking."
+    />
+    <title>BreakOut Interestelar</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <video id="bgVideo" autoplay muted loop playsinline aria-hidden="true">
+      <source src="assets/video/background.mp4" type="video/mp4" />
+    </video>
 
-  <header id="loginBar" style="position:relative; z-index:1;">
-    <form id="loginForm" style="background:rgba(0,0,0,0.7); color:#fff; padding:20px; border-radius:8px; max-width:400px; margin:20px auto; text-align:center;">
-      <label for="username" class="animate-text-dim">Usuário:</label><br>
-      <input type="text" id="username" required style="margin:5px 0 15px; padding:8px; width:80%;"><br>
-      
-      <label for="password" class="animate-text-dim">Senha:</label><br>
-      <input type="password" id="password" required style="margin:5px 0 15px; padding:8px; width:80%;"><br>
-      
-      <button type="submit" style="margin:5px; padding:8px 16px;">Entrar</button>
-      <button type="button" id="fecharLogin" style="margin:5px; padding:8px 16px;">Fechar</button>
-      <button type="button" id="abrirCadastro" style="margin:5px; padding:8px 16px;">Cadastrar</button>
-    </form>
-  </header>
+    <div class="page-wrapper">
+      <header class="site-header">
+        <div class="header-content">
+          <a class="site-title" href="#inicio">🎮 BreakOut Interestelar</a>
 
-  <main id="gameArea" style="position:relative; z-index:1; text-align:center; padding-top:20px; color:#fff;">
-    <h1 class="animate-text">🎮 BreakOut interestelar</h1>
-    <canvas id="gameCanvas" width="800" height="600" style="background:rgba(0,0,0,0.5); border-radius:8px; display:block; margin:20px auto;"></canvas>
-    <p class="animate-text-dim">Bem-vindo, <span id="playerName" class="animate-text">Visitante</span>!</p>
-  </main>
+          <nav class="main-nav" aria-label="Navegação principal">
+            <ul>
+              <li><a href="#jogo">Jogo</a></li>
+              <li><a href="#partidas">Jogadores</a></li>
+              <li><a href="#cadastro">Criar conta</a></li>
+              <li><a href="#detalhes">Detalhes</a></li>
+              <li><a href="#conta">Conta</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
 
-  <div id="cadastroModal" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); z-index:10; background:rgba(0,0,0,0.9); color:#fff; padding:30px; border-radius:8px; border:2px solid #fff; text-align:center;">
-    <h2 class="animate-text">Criar Conta</h2>
-    <form id="cadastroForm">
-      <label for="newUser" class="animate-text-dim">Usuário:</label><br>
-      <input type="text" id="newUser" required style="margin:5px 0 15px; padding:8px; width:80%;"><br>
-      
-      <label for="newPass" class="animate-text-dim">Senha:</label><br>
-      <input type="password" id="newPass" required style="margin:5px 0 15px; padding:8px; width:80%;"><br>
-      
-      <button type="submit" style="margin:5px; padding:8px 16px;">Cadastrar</button>
-      <button type="button" id="fecharCadastro" style="margin:5px; padding:8px 16px;">Cancelar</button>
-    </form>
-  </div>
+      <main class="main-content" id="inicio">
+        <section class="game-section" id="jogo" aria-labelledby="titulo-jogo">
+          <h1 class="game-title animate-text" id="titulo-jogo">BreakOut Interestelar</h1>
+          <p>Destrua os blocos, sobreviva e alcance o topo do ranking.</p>
 
-  <script>
-    const loginBar = document.getElementById("loginBar");
-    const cadastroModal = document.getElementById("cadastroModal");
-    const fecharLoginBtn = document.getElementById("fecharLogin");
-    const abrirCadastroBtn = document.getElementById("abrirCadastro");
-    const fecharCadastroBtn = document.getElementById("fecharCadastro");
-    const loginForm = document.getElementById("loginForm");
-    const cadastroForm = document.getElementById("cadastroForm");
-    const playerName = document.getElementById("playerName");
+          <canvas
+            class="game-canvas"
+            id="gameCanvas"
+            width="800"
+            height="500"
+            aria-label="Área do jogo BreakOut Interestelar"
+          >
+            Seu navegador não oferece suporte ao elemento canvas.
+          </canvas>
 
-    window.onload = function() {
-      loginBar.style.display = "block";
-    }
+          <div class="game-hud" aria-label="Status da partida">
+            <p>Pontuação <strong id="game-score">0</strong></p>
+            <p>Recorde <strong id="game-best">0</strong></p>
+            <p>Vidas <strong id="game-lives">3</strong></p>
+          </div>
+          <div class="game-controls">
+            <button class="btn-submit" id="start-game" type="button">Começar jogo</button>
+            <button class="game-secondary-button" id="pause-game" type="button" disabled>
+              Pausar
+            </button>
+          </div>
+          <div class="touch-controls" aria-label="Controles táteis da raquete">
+            <button id="move-left" type="button" aria-label="Mover raquete para a esquerda">←</button>
+            <button id="move-right" type="button" aria-label="Mover raquete para a direita">→</button>
+          </div>
+          <p class="game-message" id="game-status" role="status" aria-live="polite">
+            Use as setas ou A/D para mover a raquete. Clique em Começar jogo para jogar.
+          </p>
+          <p class="game-instructions desktop-instructions">
+            Controles: ← → ou A/D · toque ou mova o mouse na área do jogo · Espaço para pausar
+          </p>
+          <p class="game-instructions mobile-instructions">
+            Use os botões de direção ou arraste o dedo pela área do jogo. Toque em Pausar para interromper.
+          </p>
 
-    fecharLoginBtn.onclick = function() {
-      loginBar.style.display = "none";
-    }
+          <p class="player-welcome animate-text-dim">
+            Bem-vindo, <strong>Visitante</strong>! Entre na sua conta para acompanhar seu progresso.
+          </p>
+        </section>
 
-    abrirCadastroBtn.onclick = function() {
-      cadastroModal.style.display = "block";
-    }
+        <section
+          class="leaderboard-section"
+          id="cadastro"
+          aria-labelledby="titulo-cadastro"
+        >
+          <h2 class="section-title" id="titulo-cadastro">Criar conta de jogador</h2>
+          <p>Jogadores só aparecem na lista depois de preencherem o cadastro.</p>
 
-    fecharCadastroBtn.onclick = function() {
-      cadastroModal.style.display = "none";
-    }
+          <form class="score-form" id="cadastro-jogador">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="novo-jogador">Nome de jogador</label>
+                <input
+                  id="novo-jogador"
+                  name="jogador"
+                  type="text"
+                  autocomplete="nickname"
+                  minlength="3"
+                  maxlength="24"
+                  placeholder="Escolha um nome de jogador"
+                  required
+                />
+              </div>
 
-    loginForm.addEventListener("submit", function(e) {
-      e.preventDefault();
-      const user = document.getElementById("username").value;
-      playerName.textContent = user;
-      loginBar.style.display = "none";
-      alert("Login realizado com sucesso! Bem-vindo, " + user);
-    });
+              <div class="form-group">
+                <label for="senha">Senha</label>
+                <input
+                  id="senha"
+                  name="senha"
+                  type="password"
+                  autocomplete="new-password"
+                  minlength="8"
+                  required
+                />
+              </div>
+            </div>
 
-    cadastroForm.addEventListener("submit", function(e) {
-      e.preventDefault();
-      const newUser = document.getElementById("newUser").value;
-      alert("Cadastro realizado! Usuário: " + newUser);
-      cadastroModal.style.display = "none";
-    });
-  </script>
-</body>
+            <button class="btn-submit" type="submit">Cadastrar jogador</button>
+            <p id="cadastro-mensagem" role="status" aria-live="polite"></p>
+          </form>
+          <p>
+            Este protótipo salva apenas os nomes neste navegador. A senha não é armazenada;
+            cadastro seguro requer um servidor.
+          </p>
+        </section>
+
+        <section
+          class="leaderboard-section"
+          id="partidas"
+          aria-labelledby="titulo-partidas"
+        >
+          <h2 class="section-title" id="titulo-partidas">Jogadores cadastrados</h2>
+
+          <form class="toolbar" action="#" method="get">
+            <div class="toolbar-group">
+              <label for="pesquisa-jogador">Pesquisar jogador cadastrado</label>
+              <input
+                id="pesquisa-jogador"
+                name="pesquisa"
+                type="search"
+                placeholder="Digite um nome"
+              />
+            </div>
+
+            <div class="toolbar-group">
+              <label for="filtro-resultado">Filtrar por partidas</label>
+              <select id="filtro-resultado" name="filtro">
+                <option value="">Todos os jogadores</option>
+                <option value="sem-partidas">Sem partidas</option>
+                <option value="com-partidas">Com partidas</option>
+              </select>
+            </div>
+
+            <div class="toolbar-group">
+              <label for="ordenacao">Ordenar jogadores</label>
+              <select id="ordenacao" name="ordenacao">
+                <option value="">Ordem padrão</option>
+                <option value="jogador-asc">Jogador (A-Z)</option>
+                <option value="data-desc">Cadastro mais recente</option>
+              </select>
+            </div>
+          </form>
+
+          <div class="table-wrapper">
+            <table class="leaderboard-table">
+              <caption>
+                Jogadores cadastrados no BreakOut Interestelar
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Jogador</th>
+                  <th scope="col">Pontuação</th>
+                  <th scope="col">Fase</th>
+                  <th scope="col">Partidas</th>
+                  <th scope="col">Cadastro</th>
+                  <th scope="col">Ações</th>
+                </tr>
+              </thead>
+              <tbody id="lista-jogadores">
+                <tr id="sem-jogadores">
+                  <td colspan="6">Ainda não há jogadores cadastrados.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section
+          class="leaderboard-section"
+          id="detalhes"
+          aria-labelledby="titulo-detalhes"
+        >
+          <h2 class="section-title" id="titulo-detalhes">Detalhes do jogador</h2>
+          <article>
+            <p id="detalhes-jogador">Os detalhes serão exibidos após o cadastro de um jogador.</p>
+          </article>
+        </section>
+
+        <aside class="leaderboard-section" id="conta" aria-labelledby="titulo-conta">
+          <h2 class="section-title" id="titulo-conta">Conta e progresso</h2>
+          <p>Os dados das partidas e o progresso serão associados à conta do jogador.</p>
+
+          <h3>Recursos previstos</h3>
+          <ul>
+            <li>Salvar pontuações e saldo de moedas;</li>
+            <li>Personalizar raquete, bola e tema do jogo;</li>
+            <li>Consultar o histórico de partidas.</li>
+          </ul>
+        </aside>
+      </main>
+
+      <footer class="site-footer">
+        <p>BreakOut Interestelar — um jogo de arcade espacial.</p>
+      </footer>
+    </div>
+    <script src="assets/js/players.js" defer></script>
+    <script src="assets/js/game.js" defer></script>
+  </body>
 </html>
