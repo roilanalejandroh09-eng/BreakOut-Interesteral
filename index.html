@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="BreakOut Interestelar: jogue, acompanhe suas partidas e consulte o ranking."
+      content="BreakOut Interestelar: menu central com acesso ao jogo, sistema, loja e opções."
     />
     <title>BreakOut Interestelar</title>
     <link rel="stylesheet" href="assets/css/style.css" />
@@ -18,201 +18,73 @@
     <div class="page-wrapper">
       <header class="site-header">
         <div class="header-content">
-          <a class="site-title" href="#inicio">🎮 BreakOut Interestelar</a>
-
+          <a class="site-title" href="index.html">🎮 BreakOut Interestelar</a>
           <nav class="main-nav" aria-label="Navegação principal">
             <ul>
-              <li><a href="#jogo">Jogo</a></li>
-              <li><a href="#partidas">Jogadores</a></li>
-              <li><a href="#cadastro">Criar conta</a></li>
-              <li><a href="#detalhes">Detalhes</a></li>
-              <li><a href="#conta">Conta</a></li>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="jogo.html">Jogo</a></li>
+              <li><a href="sistema.html">Sistema</a></li>
+              <li><a href="loja.html">Loja</a></li>
+              <li><a href="opcoes.html">Opções</a></li>
             </ul>
           </nav>
+          <div id="player-coins" class="current-player-display" style="display: inline-block; margin-left: 1rem; padding: 0.5rem 1rem; background: rgba(251,191,36,0.2); border-radius: 6px; font-size: 0.9rem; color: #fbbf24;">0 🪙</div>
         </div>
       </header>
 
-      <main class="main-content" id="inicio">
-        <section class="game-section" id="jogo" aria-labelledby="titulo-jogo">
-          <h1 class="game-title animate-text" id="titulo-jogo">BreakOut Interestelar</h1>
-          <p>Destrua os blocos, sobreviva e alcance o topo do ranking.</p>
+      <main class="main-content">
+        <section class="hero-panel leaderboard-section">
+          <h1 class="game-title animate-text">BreakOut Interestelar</h1>
+          <p>Uma experiência interativa com gameplay, sistema de jogadores, loja virtual e opções de personalização.</p>
 
-          <canvas
-            class="game-canvas"
-            id="gameCanvas"
-            width="800"
-            height="500"
-            aria-label="Área do jogo BreakOut Interestelar"
-          >
-            Seu navegador não oferece suporte ao elemento canvas.
-          </canvas>
+          <div class="home-cards">
+            <article class="info-card">
+              <h3>Jogo</h3>
+              <p>Entre no modo arcade e destrua blocos espaciais.</p>
+              <a href="jogo.html" class="card-link">Abrir jogo</a>
+            </article>
 
-          <div class="game-hud" aria-label="Status da partida">
-            <p>Pontuação <strong id="game-score">0</strong></p>
-            <p>Recorde <strong id="game-best">0</strong></p>
-            <p>Vidas <strong id="game-lives">3</strong></p>
-          </div>
-          <div class="game-controls">
-            <button class="btn-submit" id="start-game" type="button">Começar jogo</button>
-            <button class="game-secondary-button" id="pause-game" type="button" disabled>
-              Pausar
-            </button>
-          </div>
-          <div class="touch-controls" aria-label="Controles táteis da raquete">
-            <button id="move-left" type="button" aria-label="Mover raquete para a esquerda">←</button>
-            <button id="move-right" type="button" aria-label="Mover raquete para a direita">→</button>
-          </div>
-          <p class="game-message" id="game-status" role="status" aria-live="polite">
-            Use as setas ou A/D para mover a raquete. Clique em Começar jogo para jogar.
-          </p>
-          <p class="game-instructions desktop-instructions">
-            Controles: ← → ou A/D · toque ou mova o mouse na área do jogo · Espaço para pausar
-          </p>
-          <p class="game-instructions mobile-instructions">
-            Use os botões de direção ou arraste o dedo pela área do jogo. Toque em Pausar para interromper.
-          </p>
+            <article class="info-card">
+              <h3>Sistema</h3>
+              <p>Cadastre jogadores, pesquise, filtre e veja detalhes.</p>
+              <a href="sistema.html" class="card-link">Abrir sistema</a>
+            </article>
 
-          <p class="player-welcome animate-text-dim">
-            Bem-vindo, <strong>Visitante</strong>! Entre na sua conta para acompanhar seu progresso.
-          </p>
-        </section>
+            <article class="info-card">
+              <h3>Loja</h3>
+              <p>Escolha skins e upgrades para seu perfil de jogador.</p>
+              <a href="loja.html" class="card-link">Abrir loja</a>
+            </article>
 
-        <section
-          class="leaderboard-section"
-          id="cadastro"
-          aria-labelledby="titulo-cadastro"
-        >
-          <h2 class="section-title" id="titulo-cadastro">Criar conta de jogador</h2>
-          <p>Jogadores só aparecem na lista depois de preencherem o cadastro.</p>
-
-          <form class="score-form" id="cadastro-jogador">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="novo-jogador">Nome de jogador</label>
-                <input
-                  id="novo-jogador"
-                  name="jogador"
-                  type="text"
-                  autocomplete="nickname"
-                  minlength="3"
-                  maxlength="24"
-                  placeholder="Escolha um nome de jogador"
-                  required
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="senha">Senha</label>
-                <input
-                  id="senha"
-                  name="senha"
-                  type="password"
-                  autocomplete="new-password"
-                  minlength="8"
-                  required
-                />
-              </div>
-            </div>
-
-            <button class="btn-submit" type="submit">Cadastrar jogador</button>
-            <p id="cadastro-mensagem" role="status" aria-live="polite"></p>
-          </form>
-          <p>
-            Este protótipo salva apenas os nomes neste navegador. A senha não é armazenada;
-            cadastro seguro requer um servidor.
-          </p>
-        </section>
-
-        <section
-          class="leaderboard-section"
-          id="partidas"
-          aria-labelledby="titulo-partidas"
-        >
-          <h2 class="section-title" id="titulo-partidas">Jogadores cadastrados</h2>
-
-          <form class="toolbar" action="#" method="get">
-            <div class="toolbar-group">
-              <label for="pesquisa-jogador">Pesquisar jogador cadastrado</label>
-              <input
-                id="pesquisa-jogador"
-                name="pesquisa"
-                type="search"
-                placeholder="Digite um nome"
-              />
-            </div>
-
-            <div class="toolbar-group">
-              <label for="filtro-resultado">Filtrar por partidas</label>
-              <select id="filtro-resultado" name="filtro">
-                <option value="">Todos os jogadores</option>
-                <option value="sem-partidas">Sem partidas</option>
-                <option value="com-partidas">Com partidas</option>
-              </select>
-            </div>
-
-            <div class="toolbar-group">
-              <label for="ordenacao">Ordenar jogadores</label>
-              <select id="ordenacao" name="ordenacao">
-                <option value="">Ordem padrão</option>
-                <option value="jogador-asc">Jogador (A-Z)</option>
-                <option value="data-desc">Cadastro mais recente</option>
-              </select>
-            </div>
-          </form>
-
-          <div class="table-wrapper">
-            <table class="leaderboard-table">
-              <caption>
-                Jogadores cadastrados no BreakOut Interestelar
-              </caption>
-              <thead>
-                <tr>
-                  <th scope="col">Jogador</th>
-                  <th scope="col">Pontuação</th>
-                  <th scope="col">Fase</th>
-                  <th scope="col">Partidas</th>
-                  <th scope="col">Cadastro</th>
-                  <th scope="col">Ações</th>
-                </tr>
-              </thead>
-              <tbody id="lista-jogadores">
-                <tr id="sem-jogadores">
-                  <td colspan="6">Ainda não há jogadores cadastrados.</td>
-                </tr>
-              </tbody>
-            </table>
+            <article class="info-card">
+              <h3>Opções</h3>
+              <p>Personalize som, dificuldade e aparência do jogo.</p>
+              <a href="opcoes.html" class="card-link">Abrir opções</a>
+            </article>
           </div>
         </section>
-
-        <section
-          class="leaderboard-section"
-          id="detalhes"
-          aria-labelledby="titulo-detalhes"
-        >
-          <h2 class="section-title" id="titulo-detalhes">Detalhes do jogador</h2>
-          <article>
-            <p id="detalhes-jogador">Os detalhes serão exibidos após o cadastro de um jogador.</p>
-          </article>
-        </section>
-
-        <aside class="leaderboard-section" id="conta" aria-labelledby="titulo-conta">
-          <h2 class="section-title" id="titulo-conta">Conta e progresso</h2>
-          <p>Os dados das partidas e o progresso serão associados à conta do jogador.</p>
-
-          <h3>Recursos previstos</h3>
-          <ul>
-            <li>Salvar pontuações e saldo de moedas;</li>
-            <li>Personalizar raquete, bola e tema do jogo;</li>
-            <li>Consultar o histórico de partidas.</li>
-          </ul>
-        </aside>
       </main>
 
       <footer class="site-footer">
-        <p>BreakOut Interestelar — um jogo de arcade espacial.</p>
+        <p>BreakOut Interestelar — navegue entre todas as telas do jogo.</p>
       </footer>
     </div>
-    <script src="assets/js/players.js" defer></script>
-    <script src="assets/js/game.js" defer></script>
+
+    <script>
+      const PLAYERS_KEY = "breakout-players";
+      const CURRENT_KEY = "breakout-current-player";
+      function updateCoins() {
+        try {
+          const currentId = Number(localStorage.getItem(CURRENT_KEY));
+          if (currentId) {
+            const players = JSON.parse(localStorage.getItem(PLAYERS_KEY) || "[]");
+            const player = players.find(p => p.id === currentId);
+            const el = document.getElementById("player-coins");
+            if (el && player) el.textContent = `${player.coins || 0} 🪙`;
+          }
+        } catch {}
+      }
+      updateCoins();
+    </script>
   </body>
 </html>

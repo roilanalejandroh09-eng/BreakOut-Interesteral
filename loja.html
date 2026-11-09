@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BreakOut Interestelar | Loja</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <video id="bgVideo" autoplay muted loop playsinline aria-hidden="true">
+      <source src="assets/video/background.mp4" type="video/mp4" />
+    </video>
+
+    <div class="page-wrapper">
+      <header class="site-header">
+        <div class="header-content">
+          <a class="site-title" href="index.html">🎮 BreakOut Interestelar</a>
+          <nav class="main-nav" aria-label="Navegação principal">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="jogo.html">Jogo</a></li>
+              <li><a href="sistema.html">Sistema</a></li>
+              <li><a href="loja.html">Loja</a></li>
+              <li><a href="opcoes.html">Opções</a></li>
+            </ul>
+          </nav>
+          <div id="player-coins" class="current-player-display" style="display: inline-block; margin-left: 1rem; padding: 0.5rem 1rem; background: rgba(251,191,36,0.2); border-radius: 6px; font-size: 0.9rem; color: #fbbf24;">0 🪙</div>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <section class="leaderboard-section">
+          <h2 class="section-title">Loja virtual</h2>
+          <p>Compre upgrades, skins e itens especiais para o seu perfil.</p>
+
+          <div class="store-layout">
+            <div class="store-grid" id="store-grid"></div>
+
+            <aside class="cart-panel">
+              <h3>Carrinho</h3>
+              <ul id="cart-items" class="cart-items">
+                <li>Seu carrinho está vazio.</li>
+              </ul>
+              <div class="cart-total">
+                <span>Total</span>
+                <strong id="cart-total">R$ 0,00</strong>
+              </div>
+              <button class="btn-submit" id="checkout-button" type="button">Finalizar compra</button>
+            </aside>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>BreakOut Interestelar — itens e upgrades espaciais.</p>
+      </footer>
+    </div>
+
+    <script src="assets/js/store.js" defer></script>
+  </body>
+</html>

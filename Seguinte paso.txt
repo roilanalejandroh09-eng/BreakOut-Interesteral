@@ -1,0 +1,68 @@
+📌 Visão Geral da Atividade
+Objetivo: Transformar a interface estática construída nas etapas anteriores em uma aplicação web interativa utilizando JavaScript puro, gerenciando dados efetivamente.
+
+Valor total: 7,00 pontos
+
+Prazo de entrega: Domingo, até às 23:59.
+
+Formato de entrega no Canvas: Entrada de texto contendo a URL do repositório, a URL do GitHub Pages e a URL da Release v3.0.0, além do anexo de uma cópia do repositório em formato ZIP.
+
+⚙️ Funcionalidades Obrigatórias
+Cadastrar: Capturar dados do formulário, validá-los, fornecer feedback visual ao usuário e adicionar o novo item ao sistema.
+
+Listar: Exibir os itens cadastrados dinamicamente manipulando o DOM a partir dos dados da aplicação.
+
+Visualizar Detalhes: Permitir selecionar um item para ver mais informações (por meio de outra página, modal, painel ou seção expandida).
+
+Editar: Permitir alterar dados de um item existente, atualizando a interface e o armazenamento.
+
+Excluir: Permitir remover um item cadastrado, refletindo a remoção na interface e nos dados.
+
+Pesquisar: Campo de busca para localizar itens por atributos coerentes com o domínio.
+
+Filtrar: Restringir os itens exibidos por pelo menos um critério (ex: categoria, status, prioridade, tipo, etc.).
+
+Ordenar: Alterar a ordem dos resultados (ex: ordem alfabética, data, valor, prioridade).
+
+💾 Requisitos Técnicos Específicos
+Persistência com localStorage (Obrigatório): Os dados devem ser salvos no navegador para persistirem após recarregar ou fechar a página. A aplicação precisa armazenar, recuperar ao carregar e atualizar após qualquer operação de CRUD (cadastro, edição, exclusão).
+
+Consumo de API Pública: A aplicação deve integrar pelo menos uma API pública de forma coerente e relevante com o domínio escolhido (os dados obtidos devem participar de alguma funcionalidade do sistema, como buscar itens externos para adicioná-los à base).
+
+Qualidade de Código JavaScript: Uso adequado de variáveis, condicionais, repetições, funções, arrays, objetos, manipulação do DOM, eventos, formulários e validações de forma organizada e legível.
+
+🐙 Versionamento e Publicação (Git & GitHub)
+Histórico Progressivo: O repositório deve mostrar a evolução da aplicação por meio de commits descritivos e frequentes (ex: feat: implementa cadastro, feat: adiciona localStorage, etc.). Um único commit final não é aceito.
+
+GitHub Pages: A versão final em produção deve estar publicada e testada no GitHub Pages.
+
+Criação da Release v3.0.0:
+
+Ir em Releases no GitHub e clicar em Draft a new release.
+
+Criar a tag v3.0.0.
+
+Definir o título: Etapa 3 — JavaScript, Dados e Interatividade.
+
+Descrever as funcionalidades na notas da release e publicar (Publish release).
+
+📋 Critérios de Avaliação (Rubrica)
+Critério	Pontuação Máxima	O que é avaliado
+Cadastro, edição e exclusão	1,50 pt	Funcionamento correto das operações do CRUD e atualização consistente da interface e dos dados.
+Listagem e visualização de detalhes	1,00 pt	Renderização dinâmica dos itens e visualização detalhada funcional.
+Pesquisa, filtro e ordenação	1,25 pt	Implementação correta e coerente dessas três ferramentas sobre os dados.
+Persistência utilizando localStorage	1,25 pt	Salvamento, recuperação e sincronização corretos dos dados no navegador.
+Consumo e utilização coerente de API pública	1,00 pt	Integração funcional de API externa com relevância para o sistema.
+DOM, eventos, validação e qualidade do JS	0,50 pt	Organização do código, uso correto dos conceitos da linguagem e feedback visual adequado.
+Versionamento e evolução do repositório	0,50 pt	Histórico de commits progressivo, publicação correta no GitHub Pages e criação da Release v3.0.0.
+Total	7,00 pts	
+📥 O que entregar exatamente no Canvas
+No campo de Entrada de Texto:
+
+Repositório: [URL do repositório]
+
+GitHub Pages: [URL da aplicação publicada]
+
+Release v3.0.0: [URL da Release]
+
+Como anexo: O arquivo ZIP gerado diretamente do repositório no GitHub (baixado após garantir que todos os commits e a Release final foram enviados).

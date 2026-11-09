@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BreakOut Interestelar | Jogo</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <video id="bgVideo" autoplay muted loop playsinline aria-hidden="true">
+      <source src="assets/video/background.mp4" type="video/mp4" />
+    </video>
+
+    <div class="page-wrapper">
+      <header class="site-header">
+        <div class="header-content">
+          <a class="site-title" href="index.html">🎮 BreakOut Interestelar</a>
+          <nav class="main-nav" aria-label="Navegação principal">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="jogo.html">Jogo</a></li>
+              <li><a href="sistema.html">Sistema</a></li>
+              <li><a href="loja.html">Loja</a></li>
+              <li><a href="opcoes.html">Opções</a></li>
+            </ul>
+          </nav>
+          <div id="player-coins" class="current-player-display" style="display: inline-block; margin-left: 1rem; padding: 0.5rem 1rem; background: rgba(251,191,36,0.2); border-radius: 6px; font-size: 0.9rem; color: #fbbf24;">0 🪙</div>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <section class="game-section" id="jogo" aria-labelledby="titulo-jogo">
+          <h1 class="game-title animate-text" id="titulo-jogo">BreakOut Interestelar</h1>
+          <p>Destrua os blocos, sobreviva e alcance o topo do ranking.</p>
+
+          <canvas
+            class="game-canvas"
+            id="gameCanvas"
+            width="800"
+            height="500"
+            aria-label="Área do jogo BreakOut Interestelar"
+          >
+            Seu navegador não oferece suporte ao elemento canvas.
+          </canvas>
+
+          <div class="game-hud" aria-label="Status da partida">
+            <p>Pontuação <strong id="game-score">0</strong></p>
+            <p>Recorde <strong id="game-best">0</strong></p>
+            <p>Vidas <strong id="game-lives">3</strong></p>
+          </div>
+          <div class="game-controls">
+            <button class="btn-submit" id="start-game" type="button">Começar jogo</button>
+            <button class="game-secondary-button" id="pause-game" type="button" disabled>
+              Pausar
+            </button>
+          </div>
+          <div class="touch-controls" aria-label="Controles táteis da raquete">
+            <button id="move-left" type="button" aria-label="Mover raquete para a esquerda">←</button>
+            <button id="move-right" type="button" aria-label="Mover raquete para a direita">→</button>
+          </div>
+          <p class="game-message" id="game-status" role="status" aria-live="polite">
+            Use as setas ou A/D para mover a raquete. Clique em Começar jogo para jogar.
+          </p>
+          <p class="game-instructions desktop-instructions">
+            Controles: ← → ou A/D · toque ou mova o mouse na área do jogo · Espaço para pausar
+          </p>
+          <p class="game-instructions mobile-instructions">
+            Use os botões de direção ou arraste o dedo pela área do jogo. Toque em Pausar para interromper.
+          </p>
+
+          <p class="player-welcome animate-text-dim">
+            Bem-vindo, <strong>Visitante</strong>! Entre na sua conta para acompanhar seu progresso.
+          </p>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>BreakOut Interestelar — um jogo de arcade espacial.</p>
+      </footer>
+    </div>
+
+    <script src="assets/js/game.js" defer></script>
+  </body>
+</html>

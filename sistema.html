@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BreakOut Interestelar | Sistema</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <video id="bgVideo" autoplay muted loop playsinline aria-hidden="true">
+      <source src="assets/video/background.mp4" type="video/mp4" />
+    </video>
+
+    <div class="page-wrapper">
+      <header class="site-header">
+        <div class="header-content">
+          <a class="site-title" href="index.html">🎮 BreakOut Interestelar</a>
+          <nav class="main-nav" aria-label="Navegação principal">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="jogo.html">Jogo</a></li>
+              <li><a href="sistema.html">Sistema</a></li>
+              <li><a href="loja.html">Loja</a></li>
+              <li><a href="opcoes.html">Opções</a></li>
+            </ul>
+          </nav>
+          <div id="current-player-display" class="current-player-display" style="display: none; margin-left: 1rem; padding: 0.5rem 1rem; background: rgba(255,107,53,0.2); border-radius: 6px; font-size: 0.9rem;"></div>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <section class="leaderboard-section" id="cadastro" aria-labelledby="titulo-cadastro">
+          <h2 class="section-title" id="titulo-cadastro">Criar conta de jogador</h2>
+          <p>Jogadores só aparecem na lista depois de preencherem o cadastro.</p>
+
+          <form class="score-form" id="cadastro-jogador">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="novo-jogador">Nome de jogador</label>
+                <input
+                  id="novo-jogador"
+                  name="jogador"
+                  type="text"
+                  autocomplete="nickname"
+                  minlength="3"
+                  maxlength="24"
+                  placeholder="Escolha um nome de jogador"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="senha">Senha</label>
+                <input
+                  id="senha"
+                  name="senha"
+                  type="password"
+                  autocomplete="new-password"
+                  minlength="8"
+                  required
+                />
+              </div>
+            </div>
+
+            <button class="btn-submit" type="submit">Cadastrar jogador</button>
+            <p id="cadastro-mensagem" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <section class="leaderboard-section" id="partidas" aria-labelledby="titulo-partidas">
+          <h2 class="section-title" id="titulo-partidas">Jogadores cadastrados</h2>
+
+          <form class="toolbar" action="#" method="get">
+            <div class="toolbar-group">
+              <label for="pesquisa-jogador">Pesquisar jogador</label>
+              <input id="pesquisa-jogador" name="pesquisa" type="search" placeholder="Digite um nome" />
+            </div>
+
+            <div class="toolbar-group">
+              <label for="filtro-resultado">Filtrar por partidas</label>
+              <select id="filtro-resultado" name="filtro">
+                <option value="">Todos os jogadores</option>
+                <option value="sem-partidas">Sem partidas</option>
+                <option value="com-partidas">Com partidas</option>
+              </select>
+            </div>
+
+            <div class="toolbar-group">
+              <label for="ordenacao">Ordenar jogadores</label>
+              <select id="ordenacao" name="ordenacao">
+                <option value="">Ordem padrão</option>
+                <option value="jogador-asc">Jogador (A-Z)</option>
+                <option value="data-desc">Cadastro mais recente</option>
+              </select>
+            </div>
+          </form>
+
+          <div class="table-wrapper">
+            <table class="leaderboard-table">
+              <caption>Jogadores cadastrados no BreakOut Interestelar</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Jogador</th>
+                  <th scope="col">Pontuação</th>
+                  <th scope="col">Fase</th>
+                  <th scope="col">Partidas</th>
+                  <th scope="col">Cadastro</th>
+                  <th scope="col">Ações</th>
+                </tr>
+              </thead>
+              <tbody id="lista-jogadores">
+                <tr>
+                  <td colspan="6">Ainda não há jogadores cadastrados.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="leaderboard-section" id="detalhes" aria-labelledby="titulo-detalhes">
+          <h2 class="section-title" id="titulo-detalhes">Detalhes do jogador</h2>
+          <article>
+            <p id="detalhes-jogador">Os detalhes serão exibidos após o cadastro de um jogador.</p>
+          </article>
+        </section>
+
+        <aside class="leaderboard-section" id="conta" aria-labelledby="titulo-conta">
+          <h2 class="section-title" id="titulo-conta">Conta e progresso</h2>
+          <div id="player-profile" style="display: none;">
+            <div class="player-profile-card" style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.04); border-radius: 12px; margin-bottom: 1.5rem;">
+              <h3 id="profile-name" style="color: #ff6b35; margin-bottom: 0.5rem;"></h3>
+              <p><strong>Fase:</strong> <span id="profile-phase" class="level-badge"></span></p>
+              <p><strong>Pontuação:</strong> <span id="profile-score">0</span></p>
+              <p><strong>Moedas:</strong> <span id="profile-coins" class="coins-display">0</span> 🪙</p>
+              <p><strong>Partidas:</strong> <span id="profile-games">0</span></p>
+              <button id="logout-btn" class="btn-submit small" style="margin-top: 1rem; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);">Sair da conta</button>
+            </div>
+          </div>
+          <p id="login-prompt" style="text-align: center; color: #888;">Faça login ou cadastre-se para ver seu progresso e personalizar suas skins.</p>
+
+          <div class="space-fact" id="api-astronomia" aria-live="polite">
+            <p class="space-fact-label">Rastreamento espacial</p>
+            <p>Carregando dados da ISS...</p>
+          </div>
+        </aside>
+      </main>
+
+      <footer class="site-footer">
+        <p>BreakOut Interestelar — sistema de jogadores e progresso.</p>
+      </footer>
+    </div>
+
+    <script src="assets/js/players.js" defer></script>
+  </body>
+</html>

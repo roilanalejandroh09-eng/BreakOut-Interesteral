@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BreakOut Interestelar | Opções</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <video id="bgVideo" autoplay muted loop playsinline aria-hidden="true">
+      <source src="assets/video/background.mp4" type="video/mp4" />
+    </video>
+
+    <div class="page-wrapper">
+      <header class="site-header">
+        <div class="header-content">
+          <a class="site-title" href="index.html">🎮 BreakOut Interestelar</a>
+          <nav class="main-nav" aria-label="Navegação principal">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="jogo.html">Jogo</a></li>
+              <li><a href="sistema.html">Sistema</a></li>
+              <li><a href="loja.html">Loja</a></li>
+              <li><a href="opcoes.html">Opções</a></li>
+            </ul>
+          </nav>
+          <div id="player-coins" class="current-player-display" style="display: inline-block; margin-left: 1rem; padding: 0.5rem 1rem; background: rgba(251,191,36,0.2); border-radius: 6px; font-size: 0.9rem; color: #fbbf24;">0 🪙</div>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <section class="leaderboard-section">
+          <h2 class="section-title">Opções do jogo</h2>
+
+          <div class="options-panel">
+            <label class="option-item">
+              <span>Som do jogo</span>
+              <input type="checkbox" id="sound-toggle" checked />
+            </label>
+
+            <label class="option-item">
+              <span>Dificuldade avançada</span>
+              <input type="checkbox" id="difficulty-toggle" />
+            </label>
+
+            <label class="option-item" for="theme-select">
+              <span>Tema visual</span>
+              <select id="theme-select">
+                <option value="space">Espacial</option>
+                <option value="neon">Neon</option>
+                <option value="classic">Clássico</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="status-box" id="options-status">
+            Preferências salvas no navegador.
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>BreakOut Interestelar — configurações do jogador.</p>
+      </footer>
+    </div>
+
+    <script src="assets/js/options.js" defer></script>
+  </body>
+</html>

@@ -1,5 +1,7 @@
 /* ===== BreakOut Interestelar - Estilos ===== */
 
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Press+Start+2P&display=swap');
+
 /* Animações de texto */
 @keyframes colorShift {
   0%   { color: #ffffff; text-shadow: 0 0 10px #ff6b35, 0 0 20px #ff6b35; }
@@ -21,6 +23,15 @@
   animation: colorShiftDim 3s ease-in-out infinite;
 }
 
+/* Font utilities */
+.font-retro {
+  font-family: 'Press Start 2P', monospace;
+}
+
+.font-ui {
+  font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 /* Reset e base */
 * {
   margin: 0;
@@ -29,7 +40,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   min-height: 100vh;
   position: relative;
   color: #fff;
@@ -75,6 +86,7 @@ body {
 .site-title {
   font-size: 1.8rem;
   font-weight: 700;
+  font-family: 'Orbitron', sans-serif;
 }
 
 /* Navegação */
@@ -155,6 +167,7 @@ body {
   align-items: center;
   gap: 0.5rem;
   flex-wrap: wrap;
+  font-family: 'Orbitron', sans-serif;
 }
 
 /* Formulário de cadastro de score */
@@ -309,6 +322,10 @@ body {
   background: rgba(255, 107, 53, 0.1);
 }
 
+.leaderboard-table tbody tr.current-player-row {
+  background: rgba(255, 107, 53, 0.15);
+}
+
 .leaderboard-table td:first-child {
   font-weight: 700;
   color: #ff6b35;
@@ -327,6 +344,103 @@ body {
   border-radius: 20px;
   font-size: 0.75rem;
   font-weight: 600;
+}
+
+.player-detail-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.customization-panel {
+  border-color: rgba(34, 211, 238, 0.3) !important;
+}
+
+.customization-panel h3 {
+  color: #22d3ee !important;
+  margin-bottom: 0.5rem;
+}
+
+.skin-select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.skin-select:focus {
+  outline: none;
+  border-color: #22d3ee;
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.3);
+}
+
+.skin-select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.coins-value {
+  font-weight: 600;
+  color: #fbbf24;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.85rem;
+}
+
+.coins-display {
+  font-weight: 700;
+  color: #fbbf24;
+}
+
+.player-profile-card {
+  border: 1px solid rgba(255, 107, 53, 0.3);
+}
+
+#logout-btn {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%) !important;
+}
+
+.player-detail-card h3 {
+  color: #ff6b35;
+  margin-bottom: 0.5rem;
+}
+
+.space-fact {
+  margin-top: 1.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.space-fact-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #ffb399;
+}
+
+.space-fact-card {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.space-fact-card img {
+  width: 100%;
+  border-radius: 10px;
+  height: 220px;
+  object-fit: cover;
+}
+
+.space-fact-card.fallback {
+  opacity: 0.9;
 }
 
 /* Botões de ação na tabela */
@@ -353,6 +467,8 @@ body {
 .action-btn.view:hover { background: rgba(52, 152, 219, 0.2); }
 .action-btn.edit:hover { background: rgba(241, 196, 15, 0.2); }
 .action-btn.delete:hover { background: rgba(231, 76, 60, 0.2); }
+
+.action-btn.select:hover { background: rgba(34, 211, 238, 0.2); }
 
 .action-btn:focus {
   outline: none;
@@ -507,8 +623,9 @@ body::before {
 }
 
 .game-section {
-  max-width: 960px;
-  padding: clamp(1.25rem, 4vw, 2.5rem);
+  max-width: 1280px;
+  width: min(100%, 1280px);
+  padding: clamp(1.25rem, 3vw, 2.5rem);
   border: 1px solid rgba(125, 211, 252, 0.2);
   border-radius: 18px;
   background: rgba(5, 9, 24, 0.72);
@@ -519,15 +636,18 @@ body::before {
 .game-title {
   font-size: clamp(2rem, 5vw, 3.2rem);
   letter-spacing: 0.04em;
+  font-family: 'Press Start 2P', monospace;
 }
 
 .game-canvas {
-  width: min(100%, 800px);
+  width: min(100%, 1200px);
   height: auto;
-  aspect-ratio: 8 / 5;
+  aspect-ratio: 16 / 10;
   border: 1px solid rgba(103, 232, 249, 0.35);
   border-radius: 12px;
   touch-action: none;
+  display: block;
+  margin: 0 auto;
 }
 
 .game-hud {
@@ -551,6 +671,7 @@ body::before {
   color: #67e8f9;
   font-size: 1.45rem;
   font-variant-numeric: tabular-nums;
+  font-family: 'Press Start 2P', monospace;
 }
 
 .game-controls {
@@ -619,6 +740,155 @@ body::before {
 .touch-controls button:active {
   background: rgba(103, 232, 249, 0.32);
   transform: scale(0.97);
+}
+
+.hero-panel {
+  max-width: 1100px;
+}
+
+.home-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.info-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: 1.4rem;
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+}
+
+.info-card h3 {
+  color: #ffb399;
+}
+
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin-top: auto;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(135deg, #ff6b35 0%, #e85d2a 100%);
+  padding: 0.7rem 1.1rem;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+.store-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.store-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.store-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(15, 23, 42, 0.72);
+}
+
+.store-card-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: auto;
+}
+
+.cart-panel {
+  padding: 1.2rem;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cart-panel h3 {
+  margin-bottom: 1rem;
+}
+
+.cart-items {
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.cart-items li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: #dbeafe;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  margin: 1rem 0;
+  color: #fff;
+}
+
+.options-panel {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.option-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}
+
+.option-item select {
+  min-width: 150px;
+  padding: 0.5rem 0.7rem;
+  border-radius: 8px;
+  background: rgba(2, 6, 23, 0.8);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.status-box {
+  margin-top: 1.2rem;
+  padding: 0.9rem 1rem;
+  border-radius: 8px;
+  background: rgba(103, 232, 249, 0.08);
+  border: 1px solid rgba(103, 232, 249, 0.25);
+  color: #dbeafe;
+}
+
+.btn-submit.small {
+  padding: 0.65rem 1rem;
+  font-size: 0.9rem;
 }
 
 button:focus-visible,
